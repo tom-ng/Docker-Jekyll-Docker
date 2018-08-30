@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  main:
+    build: .
+    volumes:
+      - ./sunwaytechclub-site:/site
+    ports:
+      - 80:4000
+    environment:
+      - JEKYLL_ENV=docker
+    command: bundle exec jekyll serve 4000
