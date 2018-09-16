@@ -5,7 +5,7 @@ LABEL email="ngzhenhou@gmail.com"
 LABEL organization="Sunway Tech Club"
 
 RUN apk add make gcc libc-dev g++ git && \
-    git clone -b source-dev --single-branch https://github.com/sunwaytechclub/sunwaytechclub-site.git
+    git clone -b docker-compatibility --single-branch https://github.com/sunwaytechclub/sunwaytechclub-site.git
 
 WORKDIR /sunwaytechclub-site
 
@@ -16,4 +16,4 @@ RUN gem install jekyll bundler && \
 EXPOSE 4000
 
 ENV JEKYLL_ENV=docker
-CMD bundle exec jekyll serve 4000 --force_polling
+RUN bundle exec jekyll build --destination /public
