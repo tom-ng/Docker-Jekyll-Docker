@@ -14,3 +14,6 @@ RUN gem install jekyll bundler && \
     apk del make gcc libc-dev g++
 
 EXPOSE 4000
+
+ENV JEKYLL_ENV=docker
+CMD bundle exec jekyll serve 4000 --force_polling
