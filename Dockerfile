@@ -4,16 +4,13 @@ LABEL maintainer="Tom Ng"
 LABEL email="ngzhenhou@gmail.com"
 LABEL organization="Sunway Tech Club"
 
-WORKDIR /site
-ADD ./sunwaytechclub-site /site
+RUN apk add make gcc libc-dev g++ git && \
+    git clone -b source-dev --single-branch https://github.com/sunwaytechclub/sunwaytechclub-site.git
 
-RUN echo "---------- Installing prerequisites ----------" && \
-	apk add make gcc libc-dev g++ git && \
-	echo "---------- Installing Jekyll & Bundler ----------" && \
-    gem install jekyll bundler && \
-    echo "---------- Install required gems from Gemfile ----------" && \
+WORKDIR /sunwaytechclub-site
+
+RUN gem install jekyll bundler && \
     bundle install && \
-    echo "---------- Cleaning up ----------" && \
     apk del make gcc libc-dev g++
 
 EXPOSE 4000
