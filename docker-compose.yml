@@ -9,4 +9,4 @@ services:
       - 80:4000
     environment:
       - JEKYLL_ENV=docker
-    command: bundle exec jekyll serve 4000 --force_polling
+    command: bundle exec jekyll serve 4000 --host 0.0.0.0 --force_polling
