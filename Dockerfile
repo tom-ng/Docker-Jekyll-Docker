@@ -5,7 +5,7 @@ LABEL email="ngzhenhou@gmail.com"
 LABEL organization="Sunway Tech Club"
 
 RUN apk add make gcc libc-dev g++ git && \
-    git clone -b docker-compatibility --single-branch https://github.com/sunwaytechclub/sunwaytechclub-site.git
+    git clone -b source-dev --single-branch https://github.com/sunwaytechclub/sunwaytechclub-site.git
 
 WORKDIR /sunwaytechclub-site
 
